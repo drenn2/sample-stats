@@ -1,0 +1,45 @@
+---
+title: "exploration2-questions"
+author: "Duu Renn"
+date: "August 29, 2016"
+output: 
+  pdf_document: 
+    number_sections: yes
+    toc: yes
+---
+
+```{r setup, include=FALSE}
+require(knitr)
+opts_chunk$set(
+  tidy=TRUE,     # display code as typed # Changed to true because my comments are too long
+  tidy.opts=list(width.cutoff=75),
+  size="small",    # slightly smaller font for code
+  echo=TRUE,
+  results='markup',
+  strip.white=TRUE,
+  fig.path='figs/fig',
+  cache=FALSE,
+  highlight=TRUE,
+  width.cutoff=132, 
+  size='footnotesize',
+  out.width='.9\\textwidth',
+  fig.retina=FALSE,
+  message=FALSE,
+  comment=NA)
+```
+
+
+```{r source-531-exploration2, include=F}
+require(knitr)
+source(purl("ps531/exploration2.Rmd"))
+```
+
+# Questions
+As people ask questions, I'll post responses here and push them to the shared folder. You can email me these questions or create an "issue" in the 'uips-stat-share' repository. Note that this is different than the 'explorations' repository -- we should probably try to keep that relatively clutter-free.  
+
+##
+
+
+
+
+
