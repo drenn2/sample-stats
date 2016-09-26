@@ -54,7 +54,7 @@ We will use some basic descriptive statistics in today's class. Remember that af
 # The Data
 The ANES dataset contains hundred of variables. We are only interested in a few today. If you would like to know about the other variables contained inthe ANES, read the [codebook](http://www.electionstudies.org/studypages/anes_timeseries_cdf/anes_timeseries_cdf_codebook_var.pdf).  
 
-This version of the ANES includes multiple waves or years. We will look at two sets of years, 2004 and 2008.  
+This version of the ANES includes multiple waves or years. We will look at two sets of years, 1988 and 2008.  
 
 
 ```{r, echo = T}
@@ -192,6 +192,13 @@ ggplot(anes,aes(x=ft,fill=as.factor(year)))+
                  alpha=0.5,position='identity',binwidth=10)
 ```
 
+How do attitudes towards gays and lesbians vary accross ethnic groups?  
+
+# Introducing Control Varaibles
+We have actually already doen this by introducing time into our analysis in the last section. How did time affect attitudes towards homosexuality? Does ethnicity also have a relationship? Does there seem to be a relationship between ethnicity and attitudes?  
+
+Formulate a hypothesis and write it down here. We'll test these by building some crosstables or crosstabs.  
+
 ## Attitudes by Ethnicity (Black/~Black)
 __Then do the same for Whites and African Americans separately.__
 
@@ -220,15 +227,8 @@ require(ggplot2)
 
 ```
 
-How do attitudes towards gays and lesbians vary accross ethnic groups?  
-
-# Control Through Cross-Tabs
-How did time affect attitudes towards homosexuality? Does ethnicity also have a relationship? Does there seem to be a relationship between ethnicity and attitudes?  
-
-Formulate a hypothesis and write it down here. We'll test these by building some crosstables or crosstabs.  
-
 ## Recode Feeling Thermometer 
-Let's recode the ft variable so that it simply reflects if a person responds with approval or disapproval. We'll set the cutoff at 50 for this distinction. 
+Let's recode the ft variable so that it simply reflects if a person responds with approval or disapproval. We'll set the cutoff at 50 for this distinction. This will make the tables easier to read.
 
 ```{r}
 anes$ftGay <- as.numeric(anes$ft>50)
