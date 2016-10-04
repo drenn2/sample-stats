@@ -12,7 +12,7 @@ For example:
 [Explorations for PS531](ps531/) - Find a copy of the exploration, comments, and other resources here.  
 
 ## Workshop Links
-[Descriptive Statistics](https://htmlpreview.github.io/?https://github.com/drenn2/sample-stats/blob/master/workshops-tutorials/descriptive-statistics/descriptive-stat-present.html)
+[Descriptive Statistics for Undergrads](https://htmlpreview.github.io/?https://github.com/drenn2/sample-stats/blob/master/workshops-tutorials/descriptive-statistics/descriptive-stat-present.html)
 
 ## Workshops and Tutorials
 *__Aug 26__ - Basic Markdown for reproducible research and using git for classwork and assignments  
