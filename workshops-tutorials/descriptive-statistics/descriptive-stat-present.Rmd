@@ -59,8 +59,14 @@ This version of the ANES includes multiple waves or years. We will look at two s
 
 ```{r, echo = T}
 # There are many ways of importing data. Here is one.
-setwd("~/uips-stat-share/workshops-tutorials/descriptive-statistics")
+# install.packages("RCurl")
+require(RCurl)
+download.file("https://github.com/drenn2/sample-stats/raw/master/workshops-tutorials/descriptive-statistics/anes-data.RData", destfile = "anes-data.RData")
 anes <- readRDS("anes-data.RData")
+
+# Here are some alternatives
+# setwd("~/uips-stat-share/workshops-tutorials/descriptive-statistics")
+# anes <- readRDS("anes-data.RData")
 
 # write.csv(anes, file = "anes.csv")
 # Here is another
@@ -269,3 +275,36 @@ summary(mytable) # chi-square test of indepedence
 ```
 
 # Other Tests 
+<!-- 
+
+# Use Polity
+
+## Import
+
+
+## Explain
+
+## Recode
+
+### Outcome
+
+### Casuation and Temporal Order
+
+# OLS
+## Time as explanatory
+
+## Region as control? What else? Maybe GDP
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
