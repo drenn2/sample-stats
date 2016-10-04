@@ -200,6 +200,32 @@ ggplot(anes,aes(x=ft,fill=as.factor(year)))+
 
 How do attitudes towards gays and lesbians vary accross ethnic groups?  
 
+## Disaggregation over Ethnicity
+
+### The Difference in Means/Medians
+```{r}
+# Summary
+with(subset(anes, black==0), summary(ft))
+with(subset(anes, black==1), summary(ft))
+```
+
+### Figures for the Difference
+```{r}
+# Boxplots
+# install.packages(ggplot2)
+require(ggplot2)
+ggplot(subset(anes, !is.na(black)), aes(as.factor(black), ft)) +
+  geom_boxplot() + 
+  coord_flip() +
+  ylab("Gay/Lesbian Feeling Thermometer") + 
+  xlab("Ethnicity")
+
+# Histogram
+ggplot(subset(anes, !is.na(black)), aes(color=as.factor(black), fill=as.factor(black),ft)) +
+  geom_density(alpha = 0.1)
+```
+
+
 # Introducing Control Varaibles
 We have actually already doen this by introducing time into our analysis in the last section. How did time affect attitudes towards homosexuality? Does ethnicity also have a relationship? Does there seem to be a relationship between ethnicity and attitudes?  
 
