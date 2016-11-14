@@ -36,6 +36,10 @@ opts_chunk$set(
   comment=NA)
 ```
 
+<!--
+http://tinyurl.com/h8v8btj
+-->
+
 # The AMERICAN NATIONAL ELECTION STUDIES (ANES)
 The [ANES](http://www.electionstudies.org/) is a survey that covers voting behavior, public opinion, and political participation. While the primary mission of the ANES is to answer questions about voting behavior, the wealth of variables contained in the survey mean that we can use these data to answer other questions too.  
 
@@ -73,8 +77,9 @@ anes <- readRDS("anes-data.RData")
 # anes <- read.csv("anes.csv")
 
 anes <- anes[(which(anes$VCF0004 %in% c(1988,2008))),]
-anes <- anes[,c("VCF0232", "VCF0004", "VCF0105B", "VCF0850")]
+anes <- anes[,c("VCF0232", "VCF0004", "VCF0105B", "VCF0850", "VCF0102")]
 names(anes)[names(anes)=="VCF0004"] <- "year"
+names(anes)[names(anes)=="VCF0102"] <- "age"
 ```
 
 ## Variables of Interest
@@ -296,7 +301,7 @@ dimnames(mytable) = list(
   ftGay=c("approve", "not approve"),
   religion=c("high", "low"))
 margin.table(mytable, margin = c(1:3))
-prop.table(mytable, margin = 1)
+prop.table(mytable,1)
 summary(mytable) # chi-square test of indepedence
 ```
 

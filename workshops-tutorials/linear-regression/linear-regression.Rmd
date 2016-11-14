@@ -1,0 +1,124 @@
+---
+title: "Linear Regression"
+author: "Jason Renn"
+date: '`r format(Sys.Date(), "%B %d, %Y")`'
+output:
+  pdf_document:
+    toc: yes
+    toc_depth: '2'
+  html_document:
+    fig_caption: yes
+    fig_height: 4
+    fig_width: 8
+    highlight: haddock
+    number_sections: yes
+    theme: cosmo
+    toc: yes
+    toc_depth: 2
+---
+
+\pagebreak
+
+# Research Question
+What is the outcome? What might affect this outcome? 
+
+[Is it important?](http://elevenmyanmar.com/editorial/6521)
+
+# Literature, Theory, Hypotheses
+Jensen, Nathan M. "Democratic governance and multinational corporations: Political regimes and inflows of foreign direct investment." _International Organization_ 57.03 (2003): 587-616.
+
+- Regime type
+- Size of economy
+- Conflict and stability
+- Trade
+
+```{r setup, include=FALSE}
+require(knitr)
+opts_chunk$set(
+  tidy=TRUE,
+  tidy.opts=list(width.cutoff=75),
+  size="small",
+  echo=TRUE,
+  results='markup',
+  strip.white=TRUE,
+  fig.path='figs/fig',
+  cache=TRUE,
+  highlight=TRUE,
+  width.cutoff=75, 
+  fig.retina=FALSE,
+  message=FALSE,
+  warning=FALSE,
+  comment=NA)
+```
+
+# Data
+```{r, include = T, echo = T}
+require(foreign)
+jensen <- read.dta("~/sample-stats/workshops-tutorials/linear-regression/bookreplicationPANEL.dta")
+colnames(jensen)
+
+# Outcome: FDI Inflows (millions of USD)
+summary(jensen$foreignd)
+
+# Main Explanatory: Regime
+summary(jensen$regime)
+
+# Controls: GDP, Trade, Military Expenditures
+summary(jensen$gdpperca)
+summary(jensen$tradeofg)
+summary(jensen$military)
+```
+
+# Bivariate Association
+```{r, include = T, echo = T}
+require(ggplot2)
+ggplot(data=jensen, aes(x=regime, y=foreignd)) +
+  geom_point()
+
+ggplot(data=jensen, aes(x=regime, y=foreignd)) +
+  geom_point() + 
+  stat_smooth(method = "lm")
+
+ggplot(data=jensen, aes(x=regime, y=foreignd)) +
+  geom_point() + 
+  stat_smooth(method = "lm") + 
+  scale_y_continuous(limits = c(-50, 100))
+```
+
+# Linear Regression
+```{r, results='asis'}
+lm1 <- lm(foreignd~regime, data=jensen)
+require(stargazer)
+stargazer(lm1, header = F)
+```
+
+## Coefficient
+Meaning and substantive interpretation 
+
+## Standard Error and P-values
+```{r}
+summary(lm1)
+```
+
+## Model Fit and Control Variables
+```{r, results='asis'}
+lm2 <- lm(foreignd~regime + gdpperca + tradeofg + military, data=jensen)
+stargazer(lm2, header = F)
+```
+
+```{r}
+summary(lm2)
+```
+
+```{r, results='asis'}
+lm3 <- lm(foreignd~regime + gdpperca + tradeofg + military +rnorm(nrow(jensen)), data=jensen)
+```
+
+```{r}
+summary(lm3)
+```
+
+## Association of Cause? 
+
+
+
